@@ -108,7 +108,7 @@ variable "min_api_version" {
 
 variable "zones" {
   description = "(Optional) Specifies a list of Availability Zones in which this API Management service should be located. Changing this forces a new API Management service to be created."
-  type        = string
+  type        = list(string)
   default     = null
 }
 

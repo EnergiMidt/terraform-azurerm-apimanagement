@@ -51,10 +51,10 @@ resource "azurerm_api_management" "api_management" {
   #   }
   # }
 
-  client_certificate_enabled = try(var.client_certificate_enabled, null)
-  gateway_disabled           = try(var.gateway_disabled, null)
-  min_api_version            = try(var.min_api_version, null)
-  zones                      = try(var.zones, null)
+  client_certificate_enabled = var.client_certificate_enabled
+  gateway_disabled           = var.gateway_disabled
+  min_api_version            = var.min_api_version
+  zones                      = var.zones
 
   # dynamic "identity" {
   #   for_each = try(var.configuration.identity, null) != null ? [var.configuration.identity] : []
@@ -132,7 +132,7 @@ resource "azurerm_api_management" "api_management" {
   #   }
   # }
 
-  notification_sender_email = try(var.notification_sender_email, null)
+  notification_sender_email = var.notification_sender_email
 
   # dynamic "policy" {
   #   for_each = try(var.configuration.policy, null) != null ? [var.configuration.policy] : []
@@ -214,9 +214,9 @@ resource "azurerm_api_management" "api_management" {
   #   }
   # }
 
-  public_ip_address_id          = try(var.public_ip_address_id, null)
-  public_network_access_enabled = try(var.public_network_access_enabled, null)
-  virtual_network_type          = try(var.virtual_network_type, null)
+  public_ip_address_id          = var.public_ip_address_id
+  public_network_access_enabled = var.public_network_access_enabled
+  virtual_network_type          = var.virtual_network_type
 
   # dynamic "virtual_network_configuration" {
   #   for_each = try(var.configuration.virtual_network_configuration, null) != null ? [var.configuration.virtual_network_configuration] : []
