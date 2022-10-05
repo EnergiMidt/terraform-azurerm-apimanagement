@@ -61,10 +61,12 @@ resource "azurerm_api_management" "api_management" {
 
     content {
       type = identity.value.type
-      identity_ids = coalesce(
-        try(var.configuration.identity.identity_ids, null),
-        local.managed_identities
-      )
+      # TODO: How to handle remote managed identities?
+      # identity_ids = coalesce(
+      #   try(var.configuration.identity.identity_ids, null),
+      #   local.managed_identities
+      # )
+      identity_ids = try(var.configuration.identity.identity_ids, null)
     }
   }
 
