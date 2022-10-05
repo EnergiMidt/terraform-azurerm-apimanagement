@@ -73,8 +73,9 @@ variable "sku_name" {
 }
 
 variable "configuration" {
-  description = "(Required) The configuration for block type arguments."
+  description = "(Optional) The configuration for block type arguments."
   type        = any
+  default     = null
 }
 
 # This `additional_location` variable is replaced by the use of `configuration` variables.
