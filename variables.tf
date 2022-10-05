@@ -72,21 +72,21 @@ variable "sku_name" {
   type        = string
 }
 
-variable "configuration" {
-  description = "(Optional) The configuration for block type arguments."
-  type        = any
-  default     = null
-}
-
-# This `additional_location` variable is replaced by the use of `configuration` variables.
-# variable "additional_location " {
-#   description = "(Optional) One or more additional_location blocks as defined below."
+# variable "configuration" {
+#   description = "(Optional) The configuration for block type arguments."
+#   type        = any
+#   default = null
 # }
 
-# This `certificate` variable is replaced by the use of `configuration` variables.
-# variable "certificate" {
-#   description = "(Optional) One or more (up to 10) certificate blocks as defined below."
-# }
+# # This `additional_location` variable is replaced by the use of `configuration` variables.
+# # variable "additional_location " {
+# #   description = "(Optional) One or more additional_location blocks as defined below."
+# # }
+
+# # This `certificate` variable is replaced by the use of `configuration` variables.
+# # variable "certificate" {
+# #   description = "(Optional) One or more (up to 10) certificate blocks as defined below."
+# # }
 
 variable "client_certificate_enabled" {
   description = "(Optional) Enforce a client certificate to be presented on each request to the gateway? This is only supported when SKU type is `Consumption`."
@@ -112,15 +112,15 @@ variable "zones" {
   default     = null
 }
 
-# This `identity` variable is replaced by the use of `configuration` variables.
-# variable "identity" {
-#   description = "(Optional) An identity block as defined below."
-# }
+# # This `identity` variable is replaced by the use of `configuration` variables.
+# # variable "identity" {
+# #   description = "(Optional) An identity block as defined below."
+# # }
 
-# This `hostname_configuration` variable is replaced by the use of `configuration` variables.
-# variable "hostname_configuration" {
-#   description = "(Optional) A hostname_configuration block as defined below."
-# }
+# # This `hostname_configuration` variable is replaced by the use of `configuration` variables.
+# # variable "hostname_configuration" {
+# #   description = "(Optional) A hostname_configuration block as defined below."
+# # }
 
 variable "notification_sender_email" {
   description = "(Optional) Email address from which the notification will be sent."
@@ -128,35 +128,35 @@ variable "notification_sender_email" {
   default     = null
 }
 
-# This `policy` variable is replaced by the use of `configuration` variables.
-# variable "policy" {
-#   description = "(Optional) A policy block as defined below."
-# }
+# # This `policy` variable is replaced by the use of `configuration` variables.
+# # variable "policy" {
+# #   description = "(Optional) A policy block as defined below."
+# # }
 
-# This `protocols` variable is replaced by the use of `configuration` variables.
-# variable "protocols" {
-#   description = "(Optional) A protocols block as defined below."
-# }
+# # This `protocols` variable is replaced by the use of `configuration` variables.
+# # variable "protocols" {
+# #   description = "(Optional) A protocols block as defined below."
+# # }
 
-# This `security` variable is replaced by the use of `configuration` variables.
-# variable "security" {
-#   description = "(Optional) A security block as defined below."
-# }
+# # This `security` variable is replaced by the use of `configuration` variables.
+# # variable "security" {
+# #   description = "(Optional) A security block as defined below."
+# # }
 
-# This `sign_in` variable is replaced by the use of `configuration` variables.
-# variable "sign_in" {
-#   description = "(Optional) A sign_in block as defined below."
-# }
+# # This `sign_in` variable is replaced by the use of `configuration` variables.
+# # variable "sign_in" {
+# #   description = "(Optional) A sign_in block as defined below."
+# # }
 
-# This `sign_up` variable is replaced by the use of `configuration` variables.
-# variable "sign_up" {
-#   description = "(Optional) A sign_up block as defined below."
-# }
+# # This `sign_up` variable is replaced by the use of `configuration` variables.
+# # variable "sign_up" {
+# #   description = "(Optional) A sign_up block as defined below."
+# # }
 
-# This `tenant_access` variable is replaced by the use of `configuration` variables.
-# variable "tenant_access" {
-#   description = "(Optional) A tenant_access block as defined below."
-# }
+# # This `tenant_access` variable is replaced by the use of `configuration` variables.
+# # variable "tenant_access" {
+# #   description = "(Optional) A tenant_access block as defined below."
+# # }
 
 variable "public_ip_address_id" {
   description = "(Optional) ID of a standard SKU IPv4 Public IP."
