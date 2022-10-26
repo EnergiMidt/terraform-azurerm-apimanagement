@@ -2,7 +2,7 @@ locals {
   name     = var.override_name == null ? "${var.system_name}-${lower(var.environment)}-apim" : var.override_name
   location = var.override_location == null ? var.resource_group.location : var.override_location
 
-  api_management = concat(azurerm_api_management.api_management.*, [null])[0]
+  api_management = concat(azurerm_api_management.api_management, [null])[0]
 }
 
 resource "azurerm_api_management" "api_management" {
@@ -12,9 +12,9 @@ resource "azurerm_api_management" "api_management" {
   location            = local.location
   resource_group_name = var.resource_group.name
 
-  publisher_name  = var.publisher_name
-  publisher_email = var.publisher_email
-  sku_name        = var.sku_name
+  publisher_name  = var.configuration.publisher_name
+  publisher_email = var.configuration.publisher_email
+  sku_name        = var.configuration.sku_name
 
   # checkov:skip=CKV_AZURE_107: The `virtual_network_configuration` variable is not implement yet.
   # https://docs.bridgecrew.io/docs/ensure-azure-cosmosdb-has-local-authentication-disabled
@@ -51,22 +51,19 @@ resource "azurerm_api_management" "api_management" {
     }
   }
 
-  client_certificate_enabled = try(var.client_certificate_enabled, null)
-  gateway_disabled           = try(var.gateway_disabled, null)
-  min_api_version            = try(var.min_api_version, null)
-  zones                      = try(var.zones, null)
+  client_certificate_enabled = try(var.configuration.client_certificate_enabled, null)
+  gateway_disabled           = try(var.configuration.gateway_disabled, null)
+  min_api_version            = try(var.configuration.min_api_version, null)
+  zones                      = try(var.configuration.zones, null)
 
   dynamic "identity" {
     for_each = try(var.configuration.identity, null) != null ? [var.configuration.identity] : []
 
     content {
       type = identity.value.type
-      # TODO: How to handle remote managed identities?
-      # identity_ids = coalesce(
-      #   try(var.configuration.identity.identity_ids, null),
-      #   local.managed_identities
-      # )
-      identity_ids = try(var.configuration.identity.identity_ids, null)
+      identity_ids = coalesce(
+        try(var.configuration.identity.identity_ids, null)
+      )
     }
   }
 
@@ -134,7 +131,7 @@ resource "azurerm_api_management" "api_management" {
     }
   }
 
-  notification_sender_email = try(var.notification_sender_email, null)
+  notification_sender_email = try(var.configuration.notification_sender_email, null)
 
   dynamic "policy" {
     for_each = try(var.configuration.policy, null) != null ? [var.configuration.policy] : []
@@ -216,9 +213,9 @@ resource "azurerm_api_management" "api_management" {
     }
   }
 
-  public_ip_address_id          = try(var.public_ip_address_id, null)
-  public_network_access_enabled = try(var.public_network_access_enabled, null)
-  virtual_network_type          = try(var.virtual_network_type, null)
+  public_ip_address_id          = try(var.configuration.public_ip_address_id, null)
+  public_network_access_enabled = try(var.configuration.public_network_access_enabled, null)
+  virtual_network_type          = try(var.configuration.virtual_network_type, null)
 
   dynamic "virtual_network_configuration" {
     for_each = try(var.configuration.virtual_network_configuration, null) != null ? [var.configuration.virtual_network_configuration] : []
