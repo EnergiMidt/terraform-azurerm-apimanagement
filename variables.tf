@@ -57,26 +57,26 @@ variable "enabled" {
   default     = true
 }
 
-# variable "publisher_name" {
-#   description = "(Required) The name of publisher/company."
-#   type        = string
-# }
-
-# variable "publisher_email" {
-#   description = "(Required) The email of publisher/company."
-#   type        = string
-# }
-
-# variable "sku_name" {
-#   description = "(Required) `sku_name` is a string consisting of two parts separated by an underscore(_). The first part is the `name`, valid values include: `Consumption`, `Developer`, `Basic`, `Standard` and `Premium`. The second part is the `capacity` (e.g. the number of deployed units of the `sku`), which must be a positive `integer` (e.g. `Developer_1`)."
-#   type        = string
-# }
-
-variable "configuration" {
-  description = "(Optional) The configuration for block type arguments."
-  type        = any
-  default     = null
+variable "publisher_name" {
+  description = "(Required) The name of publisher/company."
+  type        = string
 }
+
+variable "publisher_email" {
+  description = "(Required) The email of publisher/company."
+  type        = string
+}
+
+variable "sku_name" {
+  description = "(Required) `sku_name` is a string consisting of two parts separated by an underscore(_). The first part is the `name`, valid values include: `Consumption`, `Developer`, `Basic`, `Standard` and `Premium`. The second part is the `capacity` (e.g. the number of deployed units of the `sku`), which must be a positive `integer` (e.g. `Developer_1`)."
+  type        = string
+}
+
+# variable "configuration" {
+#   description = "(Optional) The configuration for block type arguments."
+#   type        = any
+#   default     = null
+# }
 
 # This `additional_location` variable is replaced by the use of `configuration` variables.
 # variable "additional_location " {
